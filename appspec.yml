@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/simple-java-maven-app
+
+hooks:
+
+  ApplicationStart:
+    - location: scripts/app-server.sh
+      timeout: 300
+      runas: ec2-user
+
+  ValidateService:
+    - location: scripts/validate.sh
+      timeout: 300
+      runas: ec2-user
